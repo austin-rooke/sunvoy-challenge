@@ -3,8 +3,21 @@ import { User } from "./user";
 import { BASE_URL } from "./constants";
 
 async function getSettingsPage(cookies: string[]) {
+  const cookieHeader = cookies.join("; ");
+
+  const options = {
+    hostname: "challenge.sunvoy.com", // The domain
+    path: "/settings/tokens", // The path to the settings page
+    method: "GET",
+    timeout: 20000,
+    headers: {
+      Cookie: cookieHeader, // Add cookies to the request
+      "User-Agent": "Mozilla/5.0", // Optional: mimic a browser request
+    },
+  };
+
   return new Promise((resolve, reject) => {
-    https.get(`${BASE_URL}/settings/tokens`, (response) => {
+    https.request(options, (response) => {
       let data = "";
 
       // Collect data as chunks
