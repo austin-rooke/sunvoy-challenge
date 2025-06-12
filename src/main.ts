@@ -1,15 +1,16 @@
 import * as fs from "fs/promises";
 import { login } from "./login";
 import { getUsers } from "./getUsers";
+import { getUserSettings } from "./getUserSettings";
 
 async function main() {
   try {
-    const token = await login();
-    const users = await getUsers(token);
+    const cookies = await login();
+    const users = await getUsers(cookies);
 
-    // Save the first 10 users into a file
-    const first10Users = users.slice(0, 10);
-    await fs.writeFile("users.json", JSON.stringify(first10Users, null, 2));
+    const myUser = await getUserSettings(cookies);
+    const totalUsers = [...users, myUser];
+    await fs.writeFile("users.json", JSON.stringify(totalUsers, null, 2));
 
     console.log("users.json created successfully");
   } catch (error) {
