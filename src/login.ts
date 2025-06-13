@@ -68,7 +68,7 @@ async function submitLogin(nonce: string): Promise<string[]> {
             cookies.push(...cookieHeader);
           }
           console.log("Login Response:", responseBody);
-          console.log("Extracted Cookies:", cookies);
+
           resolve(cookies);
         } else {
           reject(`Login failed with status code: ${res.statusCode}`);
@@ -97,12 +97,11 @@ export async function login(): Promise<string[]> {
       throw new Error("Nonce not found in the login page");
     }
 
-    console.log("Extracted nonce:", nonce);
+    console.log("Extracted nonce successfully", { nonce });
 
     // Step 3: Submit the login form with the extracted nonce
     const cookies = await submitLogin(nonce);
 
-    console.log("Login successful:", cookies);
     return cookies;
   } catch (error) {
     console.error("Error:", error);

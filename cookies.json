@@ -1,0 +1,12 @@
+{
+  "cookies": [
+    "JSESSIONID=18fae29e-59b6-4f18-b013-54684113d8a6; Max-Age=86400; Path=/; Expires=Sat, 14 Jun 2025 08:46:49 GMT; HttpOnly; Secure; SameSite=Strict",
+    "_csrf_token=8b809f88682ceeffab166ecdf4b3986b239c690c9d208ebdc5b7a622d255893a; Max-Age=86400; Path=/; Expires=Sat, 14 Jun 2025 08:46:49 GMT; HttpOnly; Secure; SameSite=Strict",
+    "user_preferences=eyJ0aGVtZSI6ImxpZ2h0IiwibGFuZ3VhZ2UiOiJlbiIsInRpbWV6b25lIjoiVVRDIiwibm90aWZpY2F0aW9ucyI6dHJ1ZX0%3D; Max-Age=2592000; Path=/; Expires=Sun, 13 Jul 2025 08:46:49 GMT; Secure; SameSite=Strict",
+    "analytics_id=analytics_75535f647046153450ee23da676c0443; Max-Age=31536000; Path=/; Expires=Sat, 13 Jun 2026 08:46:49 GMT; Secure; SameSite=Lax",
+    "session_fingerprint=82e9a30c3c971cf4432dac36f56ddbe69e64d7156158f4e0a0ab14cb1af4739e; Max-Age=86400; Path=/; Expires=Sat, 14 Jun 2025 08:46:49 GMT; HttpOnly; Secure; SameSite=Strict",
+    "feature_flags=eyJuZXdEYXNoYm9hcmQiOnRydWUsImJldGFGZWF0dXJlcyI6ZmFsc2UsImFkdmFuY2VkU2V0dGluZ3MiOnRydWUsImV4cGVyaW1lbnRhbFVJIjpmYWxzZX0%3D; Max-Age=604800; Path=/; Expires=Fri, 20 Jun 2025 08:46:49 GMT; Secure; SameSite=Strict",
+    "tracking_consent=accepted; Max-Age=31536000; Path=/; Expires=Sat, 13 Jun 2026 08:46:49 GMT; Secure; SameSite=Lax",
+    "device_id=device_26cebb6116d06caa3025c71e; Max-Age=31536000; Path=/; Expires=Sat, 13 Jun 2026 08:46:49 GMT; HttpOnly; Secure; SameSite=Strict"
+  ]
+}

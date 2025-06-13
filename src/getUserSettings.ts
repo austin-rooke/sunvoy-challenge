@@ -42,9 +42,9 @@ async function getSettingsPage(cookies: string[]): Promise<string> {
 export async function getUserSettings(cookies: string[]): Promise<User> {
   const html = await getSettingsPage(cookies);
   const extractedData = extractInputsFromHTML(html);
-  console.log({ extractedData });
+
   const checkCode = createCheckCode(extractedData);
-  console.log({ checkCode });
+
   extractedData.timestamp = String(checkCode.timestamp);
   extractedData.checkcode = checkCode.checkcode;
   const response = await fetch("https://api.challenge.sunvoy.com/api/settings", {
@@ -55,12 +55,12 @@ export async function getUserSettings(cookies: string[]): Promise<User> {
     },
     body: new URLSearchParams(extractedData).toString(),
   });
-  console.log({ response });
+
   if (!response.ok) {
     throw new Error("Failed to fetch users");
   }
 
   const myUser = (await response.json()) as User;
-  console.log({ myUser });
+  console.log(`Found user ${myUser.firstName} ${myUser.lastName}`);
   return myUser;
 }

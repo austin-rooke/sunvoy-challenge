@@ -8,12 +8,12 @@ export async function getUsers(cookies: string[]): Promise<User[]> {
       Cookie: cookies.join("; "),
     },
   });
-  console.log({ response });
+
   if (!response.ok) {
     throw new Error("Failed to fetch users");
   }
 
   const users = (await response.json()) as User[];
-  console.log({ users });
+
   return users;
 }
