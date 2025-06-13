@@ -1,19 +1,19 @@
 import * as https from "https";
 import { User } from "./user";
-import { BASE_URL } from "./constants";
 import { extractInputsFromHTML } from "./extractDataFromHtml";
 import { createCheckCode } from "./createCheckCode";
+import { DOMAIN } from "./constants";
 
 async function getSettingsPage(cookies: string[]): Promise<string> {
   const cookieHeader = cookies.join("; ");
   const options = {
-    hostname: "challenge.sunvoy.com", // The domain
-    path: "/settings/tokens", // The path to the settings page
+    hostname: DOMAIN,
+    path: "/settings/tokens",
     method: "GET",
     timeout: 20000,
     headers: {
-      Cookie: cookieHeader, // Add cookies to the request
-      "User-Agent": "Mozilla/5.0", // Optional: mimic a browser request
+      Cookie: cookieHeader,
+      "User-Agent": "Mozilla/5.0",
     },
   };
 
@@ -41,14 +41,12 @@ async function getSettingsPage(cookies: string[]): Promise<string> {
 
 export async function getUserSettings(cookies: string[]): Promise<User> {
   const html = await getSettingsPage(cookies);
-  // console.log({ html });
   const extractedData = extractInputsFromHTML(html);
   console.log({ extractedData });
   const checkCode = createCheckCode(extractedData);
   console.log({ checkCode });
   extractedData.timestamp = String(checkCode.timestamp);
   extractedData.checkcode = checkCode.checkcode;
-  // return {} as User;
   const response = await fetch("https://api.challenge.sunvoy.com/api/settings", {
     method: "POST",
     headers: {
